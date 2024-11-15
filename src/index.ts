@@ -7,18 +7,18 @@ const PORT = 3000;
 app.use(express.json());
 
 // シンプルなGETエンドポイント
-app.get('/', (req, res) => {
+app.get('/', (req:any, res:any) => {
   res.send('Hello, world!');
 });
 
 // サンプルのGETエンドポイント（パラメータ付き）
-app.get('/api/items/:id', (req, res) => {
+app.get('/api/items/:id', (req:any, res:any) => {
   const itemId = req.params.id;
   res.json({ id: itemId, name: `Item ${itemId}` });
 });
 
 // POSTエンドポイント
-app.post('/api/items', (req, res) => {
+app.post('/api/items', (req:any, res:any) => {
   const newItem = req.body;
   res.status(201).json({ message: 'Item created', item: newItem });
 });
