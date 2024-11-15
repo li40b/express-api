@@ -1,7 +1,24 @@
-// index.js
+import mysql from 'mysql2';
+
 const express = require('express');
 const app = express();
 const PORT = 3000;
+
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'user',
+  password: 'userpassword',
+  database: 'testdb',
+});
+
+connection.connect((err) => {
+  if (err) {
+    console.error('Error connecting to MySQL:', err);
+  } else {
+    console.log('Successfully connected to MySQL');
+  }
+  connection.end();
+});
 
 // JSONを扱うためのミドルウェアを追加
 app.use(express.json());
