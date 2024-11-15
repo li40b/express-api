@@ -8,7 +8,7 @@ app.use(express.json());
 
 // シンプルなGETエンドポイント
 app.get('/', (req:any, res:any) => {
-  res.send('Hello, world!');
+  res.json({ title: "Hello world" })
 });
 
 // サンプルのGETエンドポイント（パラメータ付き）
