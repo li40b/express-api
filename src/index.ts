@@ -3,6 +3,7 @@ import mysql from 'mysql2';
 const express = require('express');
 const app = express();
 const PORT = 3000;
+const useRouter = require('./routes/users');
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -27,13 +28,7 @@ app.use(express.json());
 app.get('/', (req:any, res:any) => {
   res.json({ title: "Hello world" })
 });
-
-// サンプルのGETエンドポイント（パラメータ付き）
-app.get('/api/items/:id', (req:any, res:any) => {
-  const itemId = req.params.id;
-  res.json({ id: itemId, name: `Item ${itemId}` });
-});
-
+app.use('/users', useRouter);
 // POSTエンドポイント
 app.post('/api/items', (req:any, res:any) => {
   const newItem = req.body;
